@@ -1,0 +1,16 @@
+{
+	"manifest_version": 2,
+	"content_scripts": [ {
+		"exclude_globs":    [  ],
+		"include_globs":    [ "*" ],
+		"js":               [ "BetterQuickbase.user.js" ],
+		"matches":          [ "http://*.quickbase.com/*",
+		                      "https://*.quickbase.com/*"
+		],
+		"run_at": "document_end"
+	} ],
+	"converted_from_user_script": true,
+	"description":  "Make timecards less painful!",
+	"name":         "Better Quickbase",
+	"version":      "0.0.0"
+}
