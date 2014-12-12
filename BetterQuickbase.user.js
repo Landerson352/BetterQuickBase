@@ -38,7 +38,7 @@ var onScriptLoad = function() {
 
 	function sync_element_with_localStorage(id) {
 		if(localStorage[id]) $('#'+id).val(localStorage[id]);
-		$('#'+id).on('change', function(e){
+		$('#'+id).one('change blur keyup', function(e){
 			//console.log($(this).val());
 			localStorage[$(this).attr('id')] = $(this).val();
 		});
@@ -66,6 +66,10 @@ var onScriptLoad = function() {
             sync_element_with_localStorage('_fid_25'); //Project
             sync_element_with_localStorage('_fid_6'); //Date
             sync_element_with_localStorage('_fid_8'); //Summary
+            $('#ui-datepicker-div').on('click', function(){ //Datepicker, doesn't trigger anything
+				//console.log($('#_fid_6').val());
+				localStorage['_fid_6'] = $('#_fid_6').val();
+            });
 
             //Hide useless crap
             $('#tdl_5, #tdl_8, #tdl_11').hide(); //Team Member, RelatedPorject2, Task
@@ -90,12 +94,13 @@ var onScriptLoad = function() {
             	$('#_fid_6').val(today).trigger('change');
             });
 
+            //Could be dangerous, holding off for now
             //Automatically set the summary to "PTO" when the PTO project is selected
-            $('#_fid_25').on('change', function(){
-            	if($(this).val()==50) { //PTO Project ID
-            		$('#_fid_6').val('PTO');
-            	}
-            });
+            // $('#_fid_25').on('change', function(){
+            // 	if($(this).val()==50) { //PTO Project ID
+            // 		$('#_fid_8').val('PTO').trigger('change');
+            // 	}
+            // });
 
             //Suggested Summaries (click to input)
             var suggestions = [
@@ -107,7 +112,7 @@ var onScriptLoad = function() {
             var personalSummaries = localStorage['personalSummaries']? localStorage['personalSummaries'].split('|') : [];
             var $menu = $('<div style="max-width:380px;white-space:normal;line-height:1.5em;"/>')
             	.on('click', 'a', function() {
-	                $('#_fid_8').val($(this).text());
+	                $('#_fid_8').val($(this).text()).trigger('change');
 	            });
             $('#_fid_8').after($menu);
             function renderSuggestions(){
