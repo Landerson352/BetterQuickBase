@@ -1,6 +1,8 @@
 BetterQuickBase
 ===============
 
+**Tested only in Chrome*
+
 After installing this user script, your Quickbase "Add Time Card" screen will:
 
 - Remember your last project, date, and summary selected and prepopulate it on the next card.
