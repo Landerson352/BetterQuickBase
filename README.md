@@ -13,3 +13,7 @@ The design and layout will also be changed so that:
 - Accordions are removed and the whole form is always visible.
 - Long-winded, all-caps labels are shortened.
 - The form field sizes are more closely aligned visually.
+
+###Here's a screenshot:
+
+![Screenshot](http://i.imgur.com/kFUzfXv.png)
